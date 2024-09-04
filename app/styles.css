@@ -1,0 +1,235 @@
+.container {
+  max-width: 900px;
+}
+
+.page-title {
+  font-size: 4rem;
+  font-weight: var(--font-weight-bold);
+  color: rgb(var(--color-primary));
+  text-shadow: 4px 4px 0 rgb(var(--color-primary), 0.25);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-align: center;
+  padding-top: 10%;
+  background-color: rgb(var(--color-primary));
+  background-image: var(--mesh-gradient);
+  background-size: 150% 150%;
+  animation: animateMesh 10s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-subtitle {
+  font-size: 1.25rem;
+  color: rgb(var(--color-secondary));
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.page-subtitle a {
+  text-decoration: underline;
+  font-weight: var(--font-weight-bold);
+}
+
+.currency-card--container {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+  width: 100%;
+  border-radius: 16px;
+  position: relative;
+}
+
+.frosted-glass {
+  z-index: 1;
+  background-color: rgb(var(--color-dark-2), 0.5);
+}
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .frosted-glass {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(var(--color-dark-2), 0.15);
+  }
+}
+
+.currency-card--body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.currency-card--input--container {
+  display: flex;
+  position: relative;
+}
+
+.currency-card--input--container.to-currency:after {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(var(--color-primary));
+  background-image: var(--mesh-gradient);
+  background-size: 150% 150%;
+  animation: animateMesh 10s ease infinite;
+  font-weight: var(--font-weight-bold);
+  border-radius: 8px;
+  z-index: -1;
+  filter: blur(25px);
+  opacity: 0.6;
+}
+
+.currency-card--input {
+  padding: 0 1rem;
+  border: 0;
+  background-color: rgb(var(--color-dark-2));
+  border-radius: 8px;
+  height: 3.5rem;
+  width: calc(100% + 5rem);
+}
+
+.currency-card--input:disabled {
+  position: relative;
+  cursor: not-allowed;
+  background-color: rgb(var(--color-primary));
+  background-image: var(--mesh-gradient);
+  background-size: 150% 150%;
+  animation: animateMesh 10s ease infinite;
+  background-position: center;
+  font-weight: var(--font-weight-bold);
+}
+
+@-webkit-keyframes animateMesh {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+@keyframes animateMesh {
+  0% {
+    background-position: 0% 0%;
+  }
+  25% {
+    background-position: 100% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.currency-card--input::placeholder {
+  color: rgb(var(--color-fg));
+  /* Firefox */
+  opacity: 1;
+}
+
+.currency-card--input::-ms-input-placeholder {
+  /* Edge 12-18 */
+  color: rgb(var(--color-fg));
+}
+
+.currency-card--dropdown--container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  width: 5rem;
+  height: 2rem;
+}
+
+.currency-card--dropdown--container::after {
+  content: '▾';
+  color: rgb(var(--color-fg));
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-52%);
+  pointer-events: none;
+}
+
+.currency-card--dropdown--select {
+  padding: 0 0.5rem;
+  border: 0;
+  background-color: rgb(var(--color-bg));
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  font-size: 1rem;
+  height: 100%;
+  font-weight: var(--font-weight-bold);
+}
+
+.currency-card--label {
+  margin-bottom: 8px;
+}
+
+.toggle-currency {
+  cursor: pointer;
+  background-color: rgb(var(--color-secondary));
+  border: 0;
+  border-radius: 100%;
+  min-height: 3rem;
+  height: 3rem;
+  min-width: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease-out;
+}
+
+.toggle-currency svg {
+  fill: rgb(var(--color-fg));
+  width: 1rem;
+  height: 1rem;
+  transition: 0.25s ease-out;
+}
+
+.toggle-currency:hover {
+  box-shadow: 0 0 0 0.5rem rgba(var(--color-secondary), 0.25);
+}
+
+.toggle-currency.is-active {
+  outline: 2px solid rgb(var(--color-secondary), 0.75);
+  transform: rotate(360deg) scale(1.2);
+}
+
+.currency-card--note {
+  font-size: 0.8rem;
+  color: rgb(var(--color-fg), 0.75);
+  margin-top: 0.5rem;
+}
+
+.rate-chart--container {
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+.rate-chart--container .chart > div {
+  min-height: 300px;
+}
